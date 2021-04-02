@@ -1,23 +1,21 @@
-const dataMapper = require('../dataMapper');
+const Pokemon = require('../models/pokemon');
+
 
 const mainController = {
 
-    homePage: (request, response) => {
-
-        console.debug('mainController homePage');
-
-        dataMapper.getAllPokemon((error, result) => {
-            if (!!error) {
-                response.status(500).send(error);
-                console.trace(error);
-                return;
-            }
-
-            response.render('list', { pokemonList: result.rows });
-        });
-
+    homePage: async(req, res) => {
+        try {
+            res.render('index');
+            return console.log("I'm On !");
+        } catch (error) {
+            return res.status(500).send(e);
+        }
     },
-
+    pokedexPage: async (req, res) => {
+        const pokemons = await Pokemon.findAll();
+        console.log(pokemons);
+        res.render('pokedex', {pokemons});
+    },
     pokemonPage: (request, response, next) => {
 
         console.debug('mainController pokemonPage', request.params.id);
@@ -95,6 +93,18 @@ const mainController = {
             response.render('list', { pokemonList: result.rows });
         });
 
+    },
+
+    signupPage: (req,res) => {
+        res.render('signupPage');
+    },
+
+    signInPage: (req,res) => {
+        res.render('signInPage');
+    },
+
+    myProfile: (req,res) => {
+        res.render('myProfile', {member: req.session.member});
     },
 
     notFound: (request, response) => {

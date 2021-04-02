@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+<%- include('partials/nav') %>
+
+<div class="container">
+    <h1>Recherche par Type: <span class="search-type" style="background-color: #<%=type.color%>;"><%=type.name%></span></h1>
+    <div class="cards">
+        <% for(let card of cards) { %>
+            <div class="card">
+                <img src="/img/<%=card.numero%>.png" class="card-img"/>
+                <div class="card-name">
+                    <a href="/pokemon/<%=card.numero%>">
+                        <span>#<%=card.numero%></span>
+                        <span><%=card.nom%></span>
+                    </a>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

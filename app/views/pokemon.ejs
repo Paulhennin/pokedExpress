@@ -1,0 +1,41 @@
+<%- include('partials/header') %>
+<%- include('partials/nav') %>
+<div class="container">
+    <div class="pokemon-title">Détails de <%=pokemon.nom%></div>
+    <div class="pokemon">
+        <img src="/img/<%=pokemon.numero%>.png" class="pokemon-img"/>
+        <div class="pokemon-details">
+            <div class="pokemon-name">
+                <span>#<%=pokemon.numero%></span>
+                <span><%=pokemon.nom%></span>
+            </div>
+            <div class="type-box">
+                <% for(let type of pokemon.types) { %>
+                    <div class="type" style="background-color: #<%=type.color %>;"><%=type.name %></div>
+               <% } %>
+            </div>
+            <h2>Statistiques</h2>
+            <table>
+                <tbody>
+                    <% for(let champs of Object.keys(pokemon.dataValues)){ %>
+                        <%if (champs !== 'id' && champs !== 'nom' && champs !== 'numero' && champs !=='types') { %>
+                            <tr>
+                                <td><%= champs.toUpperCase() %></td>
+                                
+                                <td><%= pokemon[champs]%></td>
+                                <td>
+                                    <% let progress= Math.round((pokemon[champs]*100)/255); %>
+                                    <progress id="pokemon-graph" max="255" value="<%=progress%>"></progress>
+                                    <!-- <div class="pokemon-graph"><div class="pokemon-progress" style="width: <%=progress%>px;"></div></div> -->
+                                    
+                                </td>
+                            </tr>
+                      <%  } %>
+                   <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div><a href="/" class="light-link">Revenir à la liste</a></div>
+</div>
+<%- include('partials/footer') %>

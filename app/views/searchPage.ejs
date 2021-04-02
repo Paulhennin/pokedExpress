@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+<%- include('partials/nav') %>
+<div class="container">
+    <div class="search-container">
+
+        <% for(type of types) { %>
+            <div class="search-type" style="background-color: #<%=type.color%>;">
+                <a href="/search/<%=type.id%>" clas="search-link"><%=type.name%></a>
+            </div>
+            <% } %>
+        </div>
+    </div>
+<%- include('partials/footer') %>

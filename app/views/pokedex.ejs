@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+<%- include('partials/nav') %>
+<div class="container">
+    <div class="cards">
+        <% for(let pokemon of pokemons) { %>
+            <div class="card">
+                <a href="/pokemon/<%=pokemon.numero%>">
+                <img src="/img/<%=pokemon.numero%>.png" class="card-img"/>
+                <div class="card-name">
+                        <img src="/img/pokeball.png" class="pokeball"/>
+                        <span class="align">#<%=pokemon.numero%></span>
+                        <span class="align"><%=pokemon.nom%></span>
+                    </div>
+                </a>
+            </div>
+        <% } %>
+    </div>
+</div>
+<%- include('partials/footer') %>
