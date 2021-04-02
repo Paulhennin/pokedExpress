@@ -11,7 +11,9 @@
             </div>
             <div class="type-box">
                 <% for(let type of pokemon.types) { %>
-                    <div class="type" style="background-color: #<%=type.color %>;"><%=type.name %></div>
+                    <a href="/type/<%=type.id%>">
+                        <div class="type" style="background-color: #<%=type.color %>;"><%=type.name %></div>
+                    </a>
                <% } %>
             </div>
             <h2>Statistiques</h2>

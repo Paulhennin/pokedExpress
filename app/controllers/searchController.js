@@ -1,32 +1,15 @@
-const dataMapper = require('../dataMapper.js');
+const Type = require('../models/type');
 
 const searchController = {
-    searchList: (req,res) => {
-        dataMapper.searchTypes((err, results) => {
-            if(err) {
-                console.error(err);
-                return;
-            } else {
-                res.render('searchPage', {types:results.rows});
-            }
-        })
+    typesList: async (req,res) => {
+        const types = await Type.findAll();
+        res.render('type', {types});
     },
-    searchType: (req, res) => {
-        const id= req.params.id;
-        dataMapper.searchByType(id ,(err, results) => {
-            if(err) {
-                console.error(err);
-                return;
-            } else {
-                let type = {};
-                if(results[0]){
-                    type.name = results[0].name;
-                    type.color = results[0].color;
-                }
-                res.render('searchByType', {cards:results, type});
-            }
-        })
+    searchByType: async (req, res) => {
+        const id = req.params.id
+        const type = await Type.findByPk(id,{ include: "pokemons"});
+        res.render('searchByType', {type});
     }
 }
 
-module.exports = searchController;
+module.exports = searchController

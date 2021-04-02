@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User = require('../models/');
 const bcrypt = require('bcrypt');
 
 const authController = {
@@ -35,9 +35,9 @@ const authController = {
                 return res.render('signInPage', {error: 'Les mots de passes ne correspondent pas.'});
             }
 
-            req.session.member = member;
-            delete req.session.member.password;
-            res.render('myProfile', { member : req.session.member});
+            req.session.user = member;
+            delete req.session.user.password;
+            res.render('myProfile', { member : req.session.user});
         } catch (error) {
             res.status(500).send(e);
         }

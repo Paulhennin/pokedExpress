@@ -4,16 +4,16 @@
 <div class="container">
     <h1>Recherche par Type: <span class="search-type" style="background-color: #<%=type.color%>;"><%=type.name%></span></h1>
     <div class="cards">
-        <% for(let card of cards) { %>
+        <% for(let pokemon of type.pokemons) { %>
             <div class="card">
-                <img src="/img/<%=card.numero%>.png" class="card-img"/>
+                <a href="/pokemon/<%=pokemon.numero%>">
+                <img src="/img/<%=pokemon.numero%>.png" class="card-img"/>
                 <div class="card-name">
-                    <a href="/pokemon/<%=card.numero%>">
-                        <span>#<%=card.numero%></span>
-                        <span><%=card.nom%></span>
-                    </a>
+                        <span>#<%=pokemon.numero%></span>
+                        <span><%=pokemon.nom%></span>
+                    </div>
+                </a>
                 </div>
-            </div>
         <% } %>
     </div>
 </div>
