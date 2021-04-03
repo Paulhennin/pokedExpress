@@ -21,7 +21,7 @@
                 <tbody>
                     <% for(let champs of Object.keys(pokemon.dataValues)){ %>
                         <%if (champs !== 'id' && champs !== 'nom' && champs !== 'numero' && champs !=='types') { %>
-                            <tr>
+                            <tr class="table-details">
                                 <td><%= champs.toUpperCase() %></td>
                                 
                                 <td><%= pokemon[champs]%></td>

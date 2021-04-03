@@ -14,17 +14,21 @@ html, body {
 
 h1 {
   font-size: 3rem;
+  margin: 1rem 0rem;
 }
 
 h2 {
   font-size: 2rem;
+  margin: 1rem 0rem;
 }
 
 h4 {
+  margin: 1rem 0rem;
   font-size: 0.8rem;
 }
 
 h5 {
+  margin: 1rem 0rem;
   font-size: 0.5rem;
 }
 
@@ -174,6 +178,7 @@ table {
 }
 
 td {
+  padding: 0.4rem 0;
   width: 33%;
 }
 
@@ -229,42 +234,6 @@ td {
   flex-wrap: wrap;
 }
 
-.connect {
-  margin: 2rem;
-  padding: 1rem;
-  font-size: 2rem;
-
-}
-
-.link-connect{
-  border: 2px solid #55131399;
-  background-color: #7c3636;
-  padding: 1rem;
-  transition: font-size 0.5s;
-}
-
-.link-connect-left {
-  border-top-left-radius: 2rem;
-  border-bottom-left-radius: 2rem;
-  border-right: none;
-  transition: all 0.3s;
-}
-.link-connect-left:hover{
-  border: 2px solid #55131399;
-  transform:scale(1.2) translate(-8%, -8%);
-}
-.link-connect-right {
-  border-left: none;
-  border-top-right-radius: 2rem;
-  border-bottom-right-radius: 2rem;
-  transition: all 0.3s;
-}
-.link-connect-right:hover{
-  border: 2px solid #55131399;
-  transform:scale(1.2) translate(8%, -8%);
-}
-
-
 .search-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -318,4 +287,43 @@ progress::-webkit-progress-value {
   width: 2rem;
   height: 2rem;
   margin: 0 1rem;
+}
+
+.connect {
+  margin: 2rem;
+  padding: 1rem;
+  font-size: 2rem;
+
+}
+
+.link-connect{
+  border: 2px solid #55131399;
+  background-color: #7c3636;
+  padding: 1rem;
+  transition: font-size 0.5s;
+}
+
+.link-connect-left {
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  border-right: none;
+  transition: all 0.3s;
+}
+.link-connect-left:hover{
+  border: 2px solid #55131399;
+  transform:scale(1.2) translate(-8%, -8%);
+}
+.link-connect-right {
+  border-left: none;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  transition: all 0.3s;
+}
+.link-connect-right:hover{
+  border: 2px solid #55131399;
+  transform:scale(1.2) translate(8%, -8%);
+}
+
+.bar {
+ margin:0 2rem;
 }

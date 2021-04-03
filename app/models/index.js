@@ -5,7 +5,8 @@ const List = require('./list');
 
 
 User.hasMany(List, {
-    as: "lists"
+    as: "lists",
+    foreignKey: "user_id"
 });
 
 List.belongsTo(User, {

@@ -22,6 +22,7 @@ router.get('/pokedex', mainController.pokedexPage);
 
 router.get('/types', searchController.typesList);
 router.get('/type/:id', searchController.searchByType);
+router.get('/mylist', listController.listPage);
 
 
 
