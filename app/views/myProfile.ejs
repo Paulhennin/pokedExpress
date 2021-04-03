@@ -1,8 +1,15 @@
 <%- include('partials/header') %>
 <%- include('partials/nav') %>
+<div class="container">
+    <h1>
+        Hello <%= member.pseudo %> 
+    </h1>
+    <div class="row">
+        <a href="/myList"> Mes listes</a>
+        <span class="bar"> | </span>
+        <a href="/pokedex">Pokedex</a>
+    </div>
 
-<p> Hello <%= member.pseudo %> </p>
-<a href="/myList"> Mes listes</a>
-<a href="/pokedex">Pokedex</a>
+</div>
 
 <%- include('partials/footer') %>

@@ -10,7 +10,6 @@ const authController= require('./controllers/authController');
 router.get('/', mainController.homePage);
 
 router.get('/pokemon/:id', mainController.pokemonPage);
-router.get('/type', mainController.typePage);
 
 router.get('/signup', mainController.signupPage);
 router.post('/signup', authController.signup);

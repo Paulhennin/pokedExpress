@@ -5,13 +5,12 @@ const List = require('./list');
 
 
 User.hasMany(List, {
-    foreignKey: "list_id",
     as: "lists"
 });
 
 List.belongsTo(User, {
-    foreignKey: "user_id",
-    as: "users"
+    as: "users",
+    foreignKey: "user_id"
 });
 
 Pokemon.belongsToMany(Type, {
