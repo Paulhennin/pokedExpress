@@ -1,4 +1,6 @@
-const Type = require('../models/type');
+const {Type} = require('../models');
+const {List} = require('../models');
+
 
 const searchController = {
     typesList: async (req,res) => {
@@ -8,7 +10,10 @@ const searchController = {
     searchByType: async (req, res) => {
         const id = req.params.id
         const type = await Type.findByPk(id,{ include: "pokemons"});
-        res.render('searchByType', {type});
+        const lists = await List.findAll(
+            {where : {user_id: req.session.user.id}}
+            );
+        res.render('searchByType', {type, lists});
     }
 }
 

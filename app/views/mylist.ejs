@@ -1,9 +1,44 @@
 <%- include('partials/header') %>
+<%- include('partials/nav') %>
 
 <div class="container">
-    <h1>Vos différentes teams</h1>
+    <h1>Teams</h1>
     <h3><%= message %></h3>
-
-
+    <table>
+        <thead>
+            <th>Nom</th>
+            <th>Pokemons</th>
+            <th>Gestion</th>
+        </thead>
+        <tbody>
+            <%if (lists) {%>
+                <% for(const list of lists) { %>
+                 <tr>
+                     <td>
+                         <a href="/team/<%=list.id%>">   <p><%= list.name %></p></a>
+                     </td>
+                     <td>
+                         pokemons
+                     </td>
+                     <td>
+                        <form action="/mylist/<%=list.id%>" method="POST">
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-primary">X</button>
+                            </div>
+                            </form>
+                     </td>
+                 </tr>
+                <%  } %>
+            <% } %>
+        </tbody>
+    </table>
+    <%if (lists) {%>
+        <% for(const list of lists) { %>
+         <a href="/team/<%=list.id%>">   <p><%= list.name %></p></a>
+        <%  } %>
+    <% } %>
+    
+<%- include('partials/gestionList', {lists}) %>
+    
 </div>
 <%- include('partials/footer') %>

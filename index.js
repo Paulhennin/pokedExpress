@@ -19,7 +19,6 @@ app.use(session({
     resave: true,
     secret: '123456'
 }));
-
 app.use(router);
 
 app.listen(PORT, () => {

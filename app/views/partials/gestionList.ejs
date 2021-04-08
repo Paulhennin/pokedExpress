@@ -1,0 +1,35 @@
+<h3>Créer une nouvelle Team :</h3>
+<div class="row">
+    <form action="/mylist" method="POST">
+        <div class="form-label-group">
+            <label for="name">Nom de l'équipe</label>
+            <input type="name" class="form-control" id="name" name="name"
+            placeholder="Nom de l'équipe">
+        </div>
+
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        </div>
+        
+        
+    </form>
+</div>
+
+<h3>Supprimer une Team :</h3>
+<div class="row">
+    <form action="/mylist" method="POST">
+        <div class="form-label-group">
+            <label for="team_select"></label>
+            <select id="team_select" name="team_select">
+                <option value="">--Please choose an option--</option>
+                <% for (const list of lists) { %>
+                    <option value="<%=list.id%>" name="team_select"><%=list.name%></option>
+                <%}%>
+            </select>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+            </div>
+        </div>
+        
+    </form>
+</div>

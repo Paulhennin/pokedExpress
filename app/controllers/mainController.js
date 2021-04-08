@@ -1,3 +1,4 @@
+const { List } = require('../models');
 const Pokemon = require('../models/pokemon');
 
 
@@ -13,14 +14,20 @@ const mainController = {
     },
     pokedexPage: async (req, res) => {
         const pokemons = await Pokemon.findAll({include: ["types"]});
-        res.render('pokedex', {pokemons});
+        const lists = await List.findAll(
+            {where : {user_id: req.session.user.id}}
+            );
+        res.render('pokedex', {pokemons, lists});
     },
 
     pokemonPage: async (req, res) => {
         const id = req.params.id;
         const pokemon = await Pokemon.findByPk(id, {include: "types"});
+        const lists = await List.findAll(
+            {where : {user_id: req.session.user.id}}
+            );
         console.log(pokemon);
-        res.render('pokemon', {pokemon});
+        res.render('pokemon', {pokemon, lists});
     },
 
     signupPage: (req,res) => {

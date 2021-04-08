@@ -13,11 +13,13 @@
                         </a>
                    <% } %>
                 </div>
+                <%- include('partials/addInTeam',{pokemon, lists}) %>
                 <div class="card-name">
-                        <img src="/img/pokeball.png" class="pokeball"/>
-                        <span class="align">#<%=pokemon.numero%></span>
-                        <span class="align"><%=pokemon.nom%></span>
-                    </div>
+                    <img src="/img/pokeball.png" class="pokeball"/>
+                    <span class="align">#<%=pokemon.numero%></span>
+                    <span class="align"><%=pokemon.nom%></span>
+                </div>
+                
                 </a>
             </div>
         <% } %>

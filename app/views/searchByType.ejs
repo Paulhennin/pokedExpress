@@ -8,6 +8,7 @@
             <div class="card">
                 <a href="/pokemon/<%=pokemon.numero%>">
                 <img src="/img/<%=pokemon.numero%>.png" class="card-img"/>
+                <%- include('partials/addInTeam',{pokemon, lists}) %>
                 <div class="card-name">
                         <span>#<%=pokemon.numero%></span>
                         <span><%=pokemon.nom%></span>
