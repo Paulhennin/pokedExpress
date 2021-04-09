@@ -176,12 +176,38 @@ table {
   width: 100%;
   font-size: 1.1rem;
 }
-
-td {
+.team-list {
+  margin: 1.5rem 0;
+}
+.team-list tbody td {
   padding: 0.4rem 0;
   width: 33%;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 2px solid transparent;
+}
+.team-title{
+  font-size: 1.5rem;
+  padding: 1rem;
+  border-bottom:2px solid #982C2C;
+}
+.team-list img{
+  width:15%;
+}
+.team-list button img {
+  width: 100%;
+}
+.team-list button {
+  background-color: transparent;
+  width: 50px;
+  height: 50px;
+  border: none;
 }
 
+.team-list tbody tr:hover {
+  background-color: #982C2C;
+  border: 2px solid #632B2B;
+}
 .pokemon-title {
   font-size: 3rem;
   font-weight: bold;

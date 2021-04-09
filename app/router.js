@@ -1,11 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-
 const mainController = require('./controllers/mainController');
 const listController = require('./controllers/listController');
 const searchController = require('./controllers/searchController');
-
 const authController= require('./controllers/authController');
 
 router.get('/', mainController.homePage);
@@ -43,8 +41,12 @@ router.get('/team/:id', listController.list);
 
 router.post('/team/:id', listController.addPokemon);
 router.post('/team/add/:id', listController.addInList);
-// router.delete('/team/delete/:id', listController.deleteInList)
+router.post('/team/:team_id/pokemon/:pokemon_id', listController.deleteInList);
+
+router.get('/disconnect', authController.disconnect);
 
 router.use(mainController.notFound);
+
+
 
 module.exports = router;

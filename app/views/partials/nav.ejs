@@ -3,8 +3,11 @@
 
         <div>
             <span class="nav-list"><a href="/myprofile">Mon profil</a></span>
-            <span class="nav-list"><a href="/pokedex">Liste</a></span>
+            <span class="nav-list"><a href="/pokedex">Pokedex</a></span>
             <span class="nav-list"><a href="/types">Types</a></span>
             <span class="nav-list"><a href="/mylist">Teams</a></span>
+            <% if(locals.user) { %>
+            <span class="nav-list"><a href="/disconnect">Déconnexion</a></span>
+            <% } %>
         </div>
     </nav>

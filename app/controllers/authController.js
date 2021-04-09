@@ -39,6 +39,14 @@ const authController = {
         } catch (error) {
             res.status(500).send(error);
         }
+    },
+    disconnect : async (req,res) => {
+        try {
+           await req.session.destroy();
+           res.redirect('/');
+        } catch (error) {
+            
+        }
     }
 }
 

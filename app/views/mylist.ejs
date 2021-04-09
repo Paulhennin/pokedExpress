@@ -4,11 +4,11 @@
 <div class="container">
     <h1>Teams</h1>
     <h3><%= message %></h3>
-    <table>
+    <table class="team-list">
         <thead>
-            <th>Nom</th>
-            <th>Pokemons</th>
-            <th>Gestion</th>
+            <th class="team-title">Nom</th>
+            <th class="team-title">Pokemons</th>
+            <th class="team-title">Gestion</th>
         </thead>
         <tbody>
             <%if (lists) {%>
@@ -18,12 +18,16 @@
                          <a href="/team/<%=list.id%>">   <p><%= list.name %></p></a>
                      </td>
                      <td>
-                         pokemons
+                         <%if (list.pokemonsDeck.length) { %>
+                            <% for(const pokemon of list.pokemonsDeck){ %>
+                                <img src="/img/<%=pokemon.dataValues.id%>.png" alt="">
+                                <%}%>
+                            <%}%>
                      </td>
                      <td>
-                        <form action="/mylist/<%=list.id%>" method="POST">
+                        <form action="/mylist/<%=list.id%>" method="POST"onsubmit="return validate(this);">
                             <div class="form-group text-center">
-                                <button type="submit" class="btn btn-primary">X</button>
+                                <button type="submit" class="btn btn-primary"><img src="/img/trash.png"></button>
                             </div>
                             </form>
                      </td>
@@ -31,14 +35,13 @@
                 <%  } %>
             <% } %>
         </tbody>
-    </table>
-    <%if (lists) {%>
-        <% for(const list of lists) { %>
-         <a href="/team/<%=list.id%>">   <p><%= list.name %></p></a>
-        <%  } %>
-    <% } %>
+    </table>    
+
     
-<%- include('partials/gestionList', {lists}) %>
-    
+</div>
+<hr>
+<div class="container">
+
+    <%- include('partials/gestionList', {lists}) %>
 </div>
 <%- include('partials/footer') %>

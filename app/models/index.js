@@ -32,14 +32,16 @@ List.belongsToMany(Pokemon, {
     as: "pokemonsDeck",
     through: "list_has_pokemon",
     foreignKey: "list_id",
-    otherKey: "pokemon_id"
+    otherKey: "pokemon_id",
+    onDelete: "CASCADE"
 });
 
 Pokemon.belongsToMany(List, {
     as: "lists",
     through: "list_has_pokemon",
     foreignKey: "pokemon_id",
-    otherKey: "list_id"
+    otherKey: "list_id",
+    onDelete: "CASCADE"
 });
 
 

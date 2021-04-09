@@ -9,9 +9,10 @@ const listController = {
             };
             console.log(req.session);
             const lists = await List.findAll(
-                {where : {user_id: req.session.user.id}},
-                {include: ["pokemons"]}
+                {where : {user_id: req.session.user.id},include: ["pokemonsDeck"]},
+                {include: "pokemonsDeck"}
                 );
+            console.log(lists);
             if(!lists.length){
                 return res.render('mylist', {lists, message: "Vous n'avez aucune listes, faites en une !"});
             }
@@ -56,9 +57,12 @@ const listController = {
     deleteList: async (req,res) => {
         try {
             const id = req.params.id;
-            console.log(req.body);
-            const deleteTeam = await List.findByPk(id, {});
-            await deleteTeam.destroy();
+            const team = await List.findByPk(id);
+            const deleteTeam =await team.getPokemonsDeck();
+            for(const pokemon of deleteTeam) {
+                pokemon.removeList(team)
+            };
+            await team.destroy();
             res.redirect('/mylist');
         } catch (error) {
             console.log(error)
@@ -80,7 +84,6 @@ const listController = {
                     res.redirect(`/team/${listId}`);
                 })
             });
-
         } catch (error) {
             console.log(error);
         }
@@ -100,8 +103,13 @@ const listController = {
     },
     deleteInList: async (req,res) => {
         try {
-            const id = req.params.id;
-            const deletePokemonInTeam = await List.findByPk(id, {});
+            const pokemonId = req.params.pokemon_id;
+            const teamId = req.params.team_id;
+            const deletePokemonInTeam = await Pokemon.findByPk(pokemonId, {}).then(pokemon => {
+                pokemon.removeList(teamId).then(result => {
+                    res.redirect(`/team/${teamId}`);
+                })
+            });
             await deleteTeam.destroy();
         } catch (error) {
             

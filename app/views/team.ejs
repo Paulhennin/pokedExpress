@@ -1,45 +1,55 @@
 <%- include('partials/header') %>
 <%- include('partials/nav') %>
+<div class="container">
+<h1>Team <%=list.name%></h1>
     <div class="cards">
         <% for(let pokemon of list.pokemonsDeck) { %>
             <div class="card">
                 <a href="/pokemon/<%=pokemon.id%>">
-                <img src="/img/<%=pokemon.numero%>.png" class="card-img"/>
-                <div class="row">
-                    <% for(let type of pokemon.types) { %>
-                        <a href="/type/<%=type.id%>">
-                            <div class="type" style="background-color: #<%=type.color %>;"><%=type.name %></div>
-                        </a>
-                   <% } %>
-                </div>
-                <div class="card-name">
-                        <img src="/img/pokeball.png" class="pokeball"/>
+                    <img src="/img/<%=pokemon.numero%>.png" class="card-img"/>
+                    <div class="row">
+                        <% for(let type of pokemon.types) { %>
+                            <a href="/type/<%=type.id%>">
+                                <div class="type" style="background-color: #<%=type.color %>;"><%=type.name %></div>
+                            </a>
+                            <% } %>
+                        </div>
+                        <div class="card-name">
+                            <img src="/img/pokeball.png" class="pokeball"/>
                         <span class="align">#<%=pokemon.numero%></span>
                         <span class="align"><%=pokemon.nom%></span>
                     </div>
                 </a>
+                <form action="/team/<%=list.id%>/pokemon/<%=pokemon.id%>" method="POST">
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary">Supprimer</button>
+                    </div>
+                    
+                    
+                </form>
             </div>
-        <% } %>
+            <% } %>
     </div>
-<hr>
-
-<form action="/team/<%=list.id%>" method="POST">
-    <div class="form-label-group">
-        <label for="pokemon_select">Choisi le pokemon à ajouter :</label>
-
-<select id="pokemon_select" name="pokemon_select">
-    <option value="">--Please choose an option--</option>
-    <% for (const pokemon of pokedex) { %>
-        <option value="<%=pokemon.id%>" name="pokemon_select"><%=pokemon.nom%></option>
-    <%}%>
-</select>
-    </div>
-
-    <div class="form-group text-center">
-        <button type="submit" class="btn btn-primary">Envoyer</button>
-    </div>
+    <hr>
     
-    
-</form>
-
-<%- include('partials/footer') %>
+    <form action="/team/<%=list.id%>" method="POST">
+        <div class="form-label-group">
+            <label for="pokemon_select">Choisi le pokemon à ajouter :</label>
+            
+            <select id="pokemon_select" name="pokemon_select">
+                <option value="">--Please choose an option--</option>
+                <% for (const pokemon of pokedex) { %>
+                    <option value="<%=pokemon.id%>" name="pokemon_select"><%=pokemon.nom%></option>
+                    <%}%>
+                </select>
+            </div>
+            
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+            </div>
+            
+            
+        </form>
+        
+    </div>
+        <%- include('partials/footer') %>
